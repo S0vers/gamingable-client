@@ -29,7 +29,10 @@ const Blog = () => {
                     What is the difference between javascript and NodeJS?
                 </div>
                 <div className="collapse-content">
-                    <p>tabIndex={0} attribute is necessary to make the div focusable</p>
+                    <p>javascript is a programming language that can write complex programs that run on the browser. NodeJs is a opensource Javascript runtime environment that let's user run javascript code without a need of a browser.</p>
+                    <p>Javascript can run on any browser with any script engine in it. where NodeJS has a V8 engine that runs javascript in it.</p>
+                    <p>Javascript is mostly used for frontend development and NodeJS is used for backend development</p>
+                    <p>Javascript can only run on browser but NodeJS can run in any computer without the help of a browser.</p>
                 </div>
             </div>
             <div tabIndex={0} className="collapse collapse-plus border rounded border-base-300  bg-rose-50 lg:w-1/2 mx-auto">
@@ -37,7 +40,7 @@ const Blog = () => {
                     How does NodeJS handle multiple requests at the same time?
                 </div>
                 <div className="collapse-content">
-                    <p>tabIndex={0} attribute is necessary to make the div focusable</p>
+                    <p>When NodeJS receives multiple request at a same time the NodeJS uses EventQueue to handle those request. When a request is made NodeJS completes that task in a eventloop while the other task stays in the EventQueue. After that task is complete NodeJS takes the next task from the EventQueue and handles that request.</p>
                 </div>
             </div>
         </div>
