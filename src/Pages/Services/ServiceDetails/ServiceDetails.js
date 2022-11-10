@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
-import { Link, useLoaderData, useLocation } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import Reviews from '../../Shared/Reviews/Reviews';
 
@@ -95,7 +95,7 @@ const ServiceDetails = () => {
                         </form>
                     </>
                     : <div className='flex flex-col justify-center items-center'>
-                        <h1 className="my-5 text-2xl font-bold text-rose-600 text-center"><Link to='/login'>New User?</Link></h1>
+                        <h1 className="my-5 text-2xl font-bold text-rose-600 text-center">New User?<Link className='mx-5' to='/login'><button className='btn btn-primary'>Login</button></Link></h1>
                     </div>
             }
             {
