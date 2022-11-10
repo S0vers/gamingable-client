@@ -6,7 +6,11 @@ const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
     const location = useLocation();
     if (loading) {
-        return <div className="radial-progress animate-spin" style={{ "--value": 20 }}></div>
+        return <>
+            <div className='flex flex-col justify-center items-center'>
+                <div className="radial-progress bg-red-500 animate-spin" style={{ "--value": 20 }}></div>
+            </div>
+        </>
     }
     if (user) {
         return children;

@@ -1,13 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import Reviews from '../../Shared/Reviews/Reviews';
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext)
     const { img, price, title, _id, description } = useLoaderData();
+    const [reviews, setReviews] = useState([]);
+    const [loading, setLoading] = useState(true)
     const handleAddReview = event => {
         event.preventDefault();
         const form = event.target;
@@ -27,8 +29,7 @@ const ServiceDetails = () => {
             userImg: userImg,
             date: date
         }
-        console.log(review)
-        fetch('http://localhost:5000/orders', {
+        fetch('http://localhost:5000/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -48,6 +49,20 @@ const ServiceDetails = () => {
             .catch(err => console.log(err))
 
     }
+    useEffect(() => {
+        fetch(`http://localhost:5000/reviews?service=${_id}`, {
+            headers: {
+            }
+        })
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                setReviews(data)
+                setLoading(false)
+            })
+    }, [_id])
+    console.log(reviews)
     return (
         <PhotoProvider>
             <div className="card card-compact w-full bg-base-100 shadow-xl">
@@ -79,9 +94,20 @@ const ServiceDetails = () => {
                             </div>
                         </form>
                     </>
-                    : <p>higgls berb</p>
+                    : <div className='flex flex-col justify-center items-center'>
+                        <h1 className="my-5 text-2xl font-bold text-rose-600 text-center"><Link to='/login'>New User?</Link></h1>
+                    </div>
             }
-            <Reviews></Reviews>
+            {
+                loading ?
+                    <>
+                        <div className='flex flex-col justify-center items-center'>
+                            <div className="radial-progress bg-red-500 animate-spin" style={{ "--value": 20 }}></div>
+                        </div>
+                    </>
+                    :
+                    <Reviews review={reviews}></Reviews>
+            }
             <Toaster></Toaster>
         </PhotoProvider>
     );
