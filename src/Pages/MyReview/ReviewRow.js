@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ReviewRow = ({ review, handleDelete }) => {
+const ReviewRow = ({ review, handleDelete, handleEditReview }) => {
     const { details, userImg, userName, _id } = review
     return (
         <tr>
@@ -20,7 +20,26 @@ const ReviewRow = ({ review, handleDelete }) => {
                 <p>{details}</p>
             </td>
             <td>
-                <button className='btn btn-primary'>Edit</button>
+                {/* The button to open modal */}
+                <label htmlFor="my-modal-5" className="btn btn-primary">Edit</label>
+
+                {/* Put this part before </body> tag */}
+                <input type="checkbox" id="my-modal-5" className="modal-toggle" />
+                <div className="modal">
+                    <div className="modal-box w-11/12 max-w-5xl">
+                        <form className=''>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Your Review</span>
+                                </label>
+                                <input name='review' type="text" placeholder="review" defaultValue={details} className="input input-bordered " />
+                            </div>
+                            <div className="form-control mt-6">
+                                <button className="btn btn-primary">Edit Review</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </td>
             <td>
                 <button onClick={() => handleDelete(_id)} className='btn btn-danger'>Delete</button>

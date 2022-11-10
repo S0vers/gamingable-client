@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import toast, { Toaster } from 'react-hot-toast';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import ReviewRow from './ReviewRow';
@@ -7,6 +8,7 @@ const MyReview = () => {
     const { user, logout } = useContext(AuthContext);
     const [loading, setLoading] = useState(true)
     const [reviews, setReview] = useState([])
+    const [edited, setEdited] = useState([])
     //http://localhost:5000/myreviews
     useEffect(() => {
         fetch(`http://localhost:5000/myreviews?userEmail=${user?.email}`, {
@@ -44,7 +46,29 @@ const MyReview = () => {
                         setReview(remaining)
                     }
                 })
+
         }
+    }
+    const handleEditReview = (_id, edited) => {
+        fetch(`http://localhost:5000/reviews/${_id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ details: edited })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    alert('Update successfully');
+                    const remaining = reviews.filter(rev => rev._id !== _id)
+                    const edited = reviews.find(rev => rev._id === _id)
+                    const newOrders = [edited, ...remaining]
+                    setReview(newOrders);
+                }
+            })
+
     }
 
     const menuItems = <>
@@ -75,7 +99,7 @@ const MyReview = () => {
                                 reviews.map(review => <ReviewRow key={review._id}
                                     review={review}
                                     handleDelete={handleDelete}
-                                // handleUpdate={handleUpdate}
+                                    handleEditReview={handleEditReview}
                                 ></ReviewRow>)
                             }
                         </tbody>
@@ -88,6 +112,10 @@ const MyReview = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Gamingable || My Review</title>
+                <meta name="Gamingable" content="Website" ></meta>
+            </Helmet>
             {menuItems}
             <Toaster></Toaster>
         </div>

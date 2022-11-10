@@ -1,8 +1,14 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 const Blog = () => {
     return (
+
         <div className='my-20'>
+            <Helmet>
+                <title>Gamingable || Blog</title>
+                <meta name="Gamingable" content="Website" ></meta>
+            </Helmet>
             <div tabIndex={0} className="collapse collapse-plus border rounded border-base-300  bg-rose-50 lg:w-1/2 mx-auto">
                 <div className="collapse-title text-xl font-medium">
                     Difference between SQL and NoSQL

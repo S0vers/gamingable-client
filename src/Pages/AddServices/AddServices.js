@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import toast, { Toaster } from 'react-hot-toast';
 
 const AddServices = () => {
@@ -39,6 +40,10 @@ const AddServices = () => {
     }
     return (
         <div >
+            <Helmet>
+                <title>Gamingable || Add Service</title>
+                <meta name="Gamingable" content="Website" ></meta>
+            </Helmet>
             <form onSubmit={handleAddService} className='flex flex-col justify-center items-center'>
                 <h1 className="my-5 text-5xl font-bold text-rose-600 text-center">Add Service</h1>
                 <div className='text-center w-full grid grid=cols-1 lg:grid-cols-2 gap-4 mb-4'>
