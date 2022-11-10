@@ -3,7 +3,6 @@ import ReviewRow from './ReviewRow';
 
 const Reviews = (reviews) => {
     const { review } = reviews
-    console.log(review)
     return (
         <div className="overflow-x-auto w-full">
             <table className="table w-full">
