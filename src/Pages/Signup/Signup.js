@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import SocialLogin from '../SocialLogin/SocialLogin';
 const Signup = () => {
-    const navigate = useNavigate();
+    const location = useLocation();
+    const Navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const handleSignup = event => {
         event.preventDefault();
@@ -18,12 +20,30 @@ const Signup = () => {
         }
         createUser(email, password)
             .then(result => {
-                //form.reset();
+                form.reset();
+                const user = result.user;
+                console.log(user);
+                const currentUser = {
+                    email: user.email
+                }
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        // local storage is not the best but the easiest place to store jwt token
+                        localStorage.setItem('genius-token', data.token);
+                        Navigate(from, { replace: true });
+                    });
                 updateUserProfile(profile)
                     .then(() => {
                     })
                     .catch(e => console.error(e));
-                navigate('/')
             })
             .catch(e => {
             })
