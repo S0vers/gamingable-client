@@ -21,7 +21,7 @@ const ServiceCard = ({ service }) => {
                     </p>
                     <div className="card-actions justify-between mt-10">
                         <p className='text-xl text-rose-600'>Price: ${price}</p>
-                        <button className="btn btn-primary">View Details</button>
+                        <Link to={`/services/${_id}`}><button className="btn btn-primary">View Details</button></Link>
                     </div>
                 </div>
             </div>
