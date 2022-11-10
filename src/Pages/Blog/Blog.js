@@ -19,8 +19,10 @@ const Blog = () => {
                     What is JWT, and how does it work?
                 </div>
                 <div className="collapse-content">
-                    <p>tabIndex={0} attribute is necessary to make the div focusable</p>
+                    <p>JWT stands for JSON Web Token. It is used mainly to authorize users to get access to part of the server data.</p>
+                    <p>When a new client logs in or signup with login and password the client a authenticate request to the server. The server creates a token for the client and sends the token back to the client. The client stores the token in either local storage or as a HTTP cookie it is better to store the data as a HTTP cookie. The next time the client sends a request for data. it sends a Authorization: Bearer token. The server verify th  JWT token then if it is the proper token the server sends the data or it sends and error.</p>
                 </div>
+
             </div>
             <div tabIndex={0} className="collapse collapse-plus border rounded border-base-300  bg-rose-50 lg:w-1/2 mx-auto">
                 <div className="collapse-title text-xl font-medium">
