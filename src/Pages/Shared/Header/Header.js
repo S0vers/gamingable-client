@@ -4,7 +4,7 @@ import img from '../../../assets/logo/favicon.png'
 const Header = () => {
     const menuItems = <>
         <li className='font-semibold'><Link to='/'>Home</Link></li>
-        <li className='font-semibold'><Link to='/'>Blogs</Link></li>
+        <li className='font-semibold'><Link to='/blog'>Blogs</Link></li>
         <li className='font-semibold'><Link to='/login'>Login</Link></li>
         <li className='font-semibold'><Link to='/login'>My Reviews</Link></li>
         <li className='font-semibold'><Link to='/login'>Add Services</Link></li>

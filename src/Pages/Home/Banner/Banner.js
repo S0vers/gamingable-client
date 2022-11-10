@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import img from '../../../assets/banner/Banner.jpg'
 const Banner = () => {
     return (
@@ -8,7 +9,7 @@ const Banner = () => {
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold">Hello there!!</h1>
                     <p className="mb-5">Welcome to my website. I am a veteran content creator. I have been making content for more then two decades. Through the years of practice I have learned some ways to game the system. So what are you waiting for?</p>
-                    <button className="btn btn-primary">Get Started</button>
+                    <Link to='/'><button className="btn btn-primary">Get Started</button></Link>
                 </div>
             </div>
         </div>
