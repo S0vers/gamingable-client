@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 const Login = () => {
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -12,7 +13,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input name='password' type="text" placeholder="email" className="input input-bordered " required />
+                                <input name='email' type="email" placeholder="email" className="input input-bordered " required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -24,7 +25,7 @@ const Login = () => {
                                 <button className="btn btn-primary">Login</button>
                             </div>
                         </form>
-
+                        <p className='text-center'>New to Gamingable <Link className=' font-bold text-rose-600' to='/signup'>Sign Up</Link></p>
                     </div>
                     <div className='text-center mb-5'>
                         <button className="btn text-lg btn-circle mx-2">
