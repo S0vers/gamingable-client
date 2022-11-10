@@ -20,7 +20,7 @@ const HomeServices = () => {
                     ></ServiceCard>)
                 }
             </div>
-            <Link to='/'><button className="btn btn-primary mt-20">See more</button></Link>
+            <Link to='/services'><button className="btn btn-primary mt-20">See more</button></Link>
         </div>
     );
 };
