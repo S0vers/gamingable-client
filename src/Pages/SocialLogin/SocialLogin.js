@@ -6,13 +6,11 @@ const SocialLogin = () => {
     const { googleSignIn, githubSignIn } = useContext(AuthContext);
     const location = useLocation();
     const Navigate = useNavigate();
-    console.log(location.state?.from?.pathname)
     const from = location.state?.from?.pathname || '/';
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
-                console.log(user)
                 const currentUser = {
                     email: user.email
                 }
@@ -25,7 +23,6 @@ const SocialLogin = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
                         localStorage.setItem('genius-token', data.token);
                         Navigate(from, { replace: true });
                     });
@@ -37,7 +34,6 @@ const SocialLogin = () => {
         githubSignIn()
             .then(result => {
                 const user = result.user;
-                console.log(user)
                 const currentUser = {
                     email: user.email
                 }
@@ -50,7 +46,6 @@ const SocialLogin = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
                         localStorage.setItem('genius-token', data.token);
                         Navigate(from, { replace: true });
                     });

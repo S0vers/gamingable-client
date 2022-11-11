@@ -43,7 +43,6 @@ const ServiceDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.acknowledged) {
                     toast.success('Review Posted Successfully.');
                     form.reset();
@@ -65,7 +64,6 @@ const ServiceDetails = () => {
                 setLoading(false)
             })
     }, [_id])
-    console.log(reviews)
     return (
         <PhotoProvider>
             <div className="card card-compact w-full bg-base-100 shadow-xl">

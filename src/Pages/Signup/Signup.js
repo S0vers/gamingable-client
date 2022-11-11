@@ -23,7 +23,6 @@ const Signup = () => {
             .then(result => {
                 form.reset();
                 const user = result.user;
-                console.log(user);
                 const currentUser = {
                     email: user.email
                 }
@@ -36,7 +35,6 @@ const Signup = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
                         // local storage is not the best but the easiest place to store jwt token
                         localStorage.setItem('genius-token', data.token);
                         Navigate(from, { replace: true });

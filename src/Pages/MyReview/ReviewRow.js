@@ -11,7 +11,6 @@ const ReviewRow = ({ review, handleDelete }) => {
         setEdited(newReview)
     }
     const handleEditReview = () => {
-        console.log(edited)
         fetch(`https://gamingable-server-e8mcnhjtb-s0vers.vercel.app/reviews/${_id}`, {
             method: 'PATCH',
             headers: {
@@ -21,7 +20,6 @@ const ReviewRow = ({ review, handleDelete }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.modifiedCount > 0) {
                     alert('Update successfully');
                 }
