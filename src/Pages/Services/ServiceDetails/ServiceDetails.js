@@ -19,6 +19,7 @@ const ServiceDetails = () => {
         const reviewText = form.review.value;
         const date = new Date().getTime();
         const uid = user.uid;
+        const serviceImg = img;
         const review = {
             service: _id,
             serviceName: title,
@@ -27,9 +28,11 @@ const ServiceDetails = () => {
             details: reviewText,
             userUid: uid,
             userImg: userImg,
-            date: date
+            date: date,
+            serviceImg: serviceImg,
+
         }
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://gamingable-server-e8mcnhjtb-s0vers.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -50,7 +53,7 @@ const ServiceDetails = () => {
 
     }
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?service=${_id}`, {
+        fetch(`https://gamingable-server-e8mcnhjtb-s0vers.vercel.app/reviews?service=${_id}`, {
             headers: {
             }
         })

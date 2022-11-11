@@ -8,10 +8,9 @@ const MyReview = () => {
     const { user, logout } = useContext(AuthContext);
     const [loading, setLoading] = useState(true)
     const [reviews, setReview] = useState([])
-    const [edited, setEdited] = useState([])
-    //http://localhost:5000/myreviews
+    //https://gamingable-server-e8mcnhjtb-s0vers.vercel.app/myreviews
     useEffect(() => {
-        fetch(`http://localhost:5000/myreviews?userEmail=${user?.email}`, {
+        fetch(`https://gamingable-server-e8mcnhjtb-s0vers.vercel.app/myreviews?userEmail=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('genius-token')}`
             }
@@ -28,9 +27,9 @@ const MyReview = () => {
             })
     }, [user?.email, logout])
     const handleDelete = _id => {
-        const proceed = window.confirm('Are you sure, you want to delete this order?')
+        const proceed = window.confirm('Are you sure, you want to delete this Review?')
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/${_id}`, {
+            fetch(`https://gamingable-server-e8mcnhjtb-s0vers.vercel.app/reviews/${_id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('genius-token')}`
@@ -48,27 +47,6 @@ const MyReview = () => {
                 })
 
         }
-    }
-    const handleEditReview = (_id, edited) => {
-        fetch(`http://localhost:5000/reviews/${_id}`, {
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ details: edited })
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.modifiedCount > 0) {
-                    alert('Update successfully');
-                    const remaining = reviews.filter(rev => rev._id !== _id)
-                    const edited = reviews.find(rev => rev._id === _id)
-                    const newOrders = [edited, ...remaining]
-                    setReview(newOrders);
-                }
-            })
-
     }
 
     const menuItems = <>
@@ -99,7 +77,6 @@ const MyReview = () => {
                                 reviews.map(review => <ReviewRow key={review._id}
                                     review={review}
                                     handleDelete={handleDelete}
-                                    handleEditReview={handleEditReview}
                                 ></ReviewRow>)
                             }
                         </tbody>

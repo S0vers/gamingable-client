@@ -16,7 +16,7 @@ const SocialLogin = () => {
                 const currentUser = {
                     email: user.email
                 }
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://gamingable-server-e8mcnhjtb-s0vers.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -41,7 +41,7 @@ const SocialLogin = () => {
                 const currentUser = {
                     email: user.email
                 }
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://gamingable-server-e8mcnhjtb-s0vers.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

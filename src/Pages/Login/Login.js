@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -20,7 +21,7 @@ const Login = () => {
                     email: user.email
                 };
                 //get jwt Token 
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://gamingable-server-e8mcnhjtb-s0vers.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -40,6 +41,10 @@ const Login = () => {
     }
     return (
         <div className="hero min-h-screen bg-base-200">
+            <Helmet>
+                <title>Gamingable || Login</title>
+                <meta name="Gamingable" content="Website" ></meta>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl  bg-rose-50">
                     <div className="card-body">

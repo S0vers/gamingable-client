@@ -6,7 +6,7 @@ const HomeServices = () => {
     const [services, setSetServices] = useState([]);
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        fetch('http://localhost:5000/homeservices')
+        fetch('https://gamingable-server-e8mcnhjtb-s0vers.vercel.app/homeservices')
             .then(res => res.json())
             .then(data => {
                 setSetServices(data)

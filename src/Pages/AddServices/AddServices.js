@@ -18,7 +18,7 @@ const AddServices = () => {
             description: details,
             date: date
         }
-        fetch('http://localhost:5000/services', {
+        fetch('https://gamingable-server-e8mcnhjtb-s0vers.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
